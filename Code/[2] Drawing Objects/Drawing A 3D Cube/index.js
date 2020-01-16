@@ -213,15 +213,15 @@ function main( )
     	m[9]=c * m[9] + s * mv8;
     }
 
-	var previus_time = 0;
+	var previous_time = 0;
 
     var animate = function( time )
     {
-    	var dt = time - previus_time;
+    	var dt = time - previous_time;
     	rotateZ( mov_matrix, dt * 0.001 );//time
     	rotateY( mov_matrix, dt * 0.0004 );
     	rotateX( mov_matrix, dt * 0.0006 );
-    	previus_time = time;
+    	previous_time = time;
 
     	gl.enable( gl.DEPTH_TEST );
     	gl.depthFunc( gl.LEQUAL );
