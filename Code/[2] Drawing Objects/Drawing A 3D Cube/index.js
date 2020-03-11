@@ -136,6 +136,7 @@ function main( )
 
     // Position Buffer Binding
     gl.enableVertexAttribArray( position );
+    
     gl.bindBuffer( gl.ARRAY_BUFFER, color_buffer );
     var color = gl.getAttribLocation( shaderProgram, "color");
     gl.vertexAttribPointer( color, 3, gl.FLOAT, false,0,0 ) ;
