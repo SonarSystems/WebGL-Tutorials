@@ -124,7 +124,7 @@ function main( )
 		'void main()',
 		'{',
 			'vTextureCoord = textureCoord;',
-			'gl_Position = Pmatrix * Vmatrix * Mmatrix * vec4(position, 1.0);',
+			'gl_Position = Pmatrix * Vmatrix * Mmatrix * vec4(position, 1.0) + vec4(vec3(translation.x, translation.y, 0.0), -translation.z);',
 		'}'
 	].join( '\n' );
 
