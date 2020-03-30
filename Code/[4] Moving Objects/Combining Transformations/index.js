@@ -124,7 +124,7 @@ function main( )
 		'void main()',
 		'{',
 			'vTextureCoord = textureCoord;',
-			'gl_Position = Pmatrix * Vmatrix * Mmatrix * vec4(position, 1.0) + vec4(vec3(translation.x, translation.y, 0.0), -translation.z);',
+			'gl_Position = Pmatrix * Vmatrix * Mmatrix * vec4(position, 1.0) * scaleMatrix + vec4(vec3(translation.x, translation.y, 0.0), -translation.z);',
 		'}'
 	].join( '\n' );
 
@@ -295,7 +295,7 @@ function main( )
 		gl.enable( gl.DEPTH_TEST );
     	gl.depthFunc( gl.LEQUAL );
     	gl.clearColor( 0.5, 0.5, 0.5, 0.9 );
-    	gl.clearDepth( 10.0 );
+    	gl.clearDepth( 1.0 );
 
 		gl.viewport( 0.0, 0.0, canvas.width, canvas.height );
     	gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
@@ -308,15 +308,12 @@ function main( )
 		gl.activeTexture( gl.TEXTURE0 );
 
 		// translation
-		/*
-        var tX = 3.0, tY = 0.0, tZ = 1.0;
+        var tX = 3.0, tY = 0.0, tZ = -10.0;
         var translation = gl.getUniformLocation( shaderProgram, 'translation' );
         gl.uniform3f( translation, tX, tY, tZ );
-        */
 
         // scaling
-        /*
-        var sX = 1.0, sY = 1.0, sZ = 1.0;
+        var sX = 3.0, sY = 3.0, sZ = 3.0;
         var formMatrix = new Float32Array( [
            sX,   0.0,  0.0,  0.0,
            0.0,  sY,   0.0,  0.0,
@@ -326,7 +323,6 @@ function main( )
 
         var scaleMatrix = gl.getUniformLocation( shaderProgram, 'scaleMatrix' );
         gl.uniformMatrix4fv( scaleMatrix, false, formMatrix);
-        */
 
 
 		gl.drawElements( gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0 );
