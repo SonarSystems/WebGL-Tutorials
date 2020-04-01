@@ -41,26 +41,26 @@ function main( )
 	var rotationSpeed = 1.0;
 
 	canvas.addEventListener( "mousemove", MouseMove, false );
-	canvas.addEventListener( "mousedown", MouseClick, false );
+	canvas.addEventListener( "mousedown", MouseDown, false );
 	canvas.addEventListener( "wheel", MouseWheel, false );
- 
+
 	function MouseMove( event )
 	{
-	    console.log( event.pageX + " : " + event.pageY );
-	    //console.log( event );
+		console.log( event.clientX + " : " + event.clientY );
+		//console.log( event );
 	}
 
-	function MouseClick( event )
+	function MouseDown( event )
 	{
 		if ( 0 === event.button )
-		{ 
+		{
 			console.log( "Left mouse button pressed" );
 		}
-		else if ( 1 === event.button )
+		if ( 1 === event.button )
 		{
 			console.log( "Middle mouse button pressed" );
 		}
-		else if ( 2 === event.button )
+		if ( 2 === event.button )
 		{
 			console.log( "Right mouse button pressed" );
 		}
@@ -69,8 +69,7 @@ function main( )
 
 	function MouseWheel( event )
 	{
-		rotationSpeed += 0.001 * event.deltaY;	
-
+		rotationSpeed += 0.001 * event.deltaY;
 		//console.log( event );
 	}
 	/*
